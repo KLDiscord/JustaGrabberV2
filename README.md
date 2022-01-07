@@ -28,8 +28,8 @@
 <p align="left"><img src="https://media.discordapp.net/attachments/903924643843424266/905003319657902100/b1eb83bacc03b959.JPG?width=806&height=676"</p>
 
 ### ❗ About modules
-JustaGrabber dosen't needs any other modules. 
-Just need python 3's internal module! (os, re, json, urllib.request)
+There must be request module installed in your victim's computer.
+If you want to auto install, put os.system("pip install requests") in line 1
  
 ### 📁・ How to use
 1. Download python 3 at [python.org](https://python.org). Must be 3.x.x
