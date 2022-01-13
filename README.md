@@ -57,5 +57,5 @@ If you open JustaGrabber.py you will se some settings in line 18,19
  
  <p align="center">
     <br>Number of views: <br>
-    <img src="https://profile-counter.glitch.me/kldiscord/count.svg" />
+    <img src="https://profile-counter.glitch.me/kldiscord/JustaGrabber/count.svg" />
 </p>
