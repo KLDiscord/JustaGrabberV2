@@ -13,8 +13,12 @@
 
 ---
 
-#### 💗 New Features v.1.3
- - Updated some bugs
+#### 💗 New Features v.1.4
+ * Token checker
+ * If token is invalid, will not send it to you
+ 
+ + Module checker
+ -> Go to About Modules
  
 #### 🎁 Things will send to you when it grabs someting :
  -  Username, Computer name
@@ -27,8 +31,8 @@
 <p align="left"><img src="https://media.discordapp.net/attachments/903924643843424266/905003319657902100/b1eb83bacc03b959.JPG?width=806&height=676"</p>
 
 ### ❗ About modules
-There must be request module installed in your victim's computer.
-If you want to auto install, put os.system("pip install requests") in line 1
+If requests module is not installed in your victim's computer,
+JustaGrabber will just exit.
  
 ### 📁・ How to use
 1. Download python 3 at [python.org](https://python.org). Must be 3.x.x
@@ -37,7 +41,8 @@ If you want to auto install, put os.system("pip install requests") in line 1
 4. Send the code or use as backdoor. Or convert to exe then give to others
 
 ### ⚙・How to compile .py to .exe
-First, install pyinstaller using pip in cmd.
+First, install pyinstaller using pip in cmd. ( pip install pyinstaller )
+And you must have to check to 'Add python x.x.x to path' when you install
 Open cmd in the directory that the JustaGrabber.py is in then type : 
 ```
 pyinstaller --onefile --clean --noconsole JustaGrabber.py
