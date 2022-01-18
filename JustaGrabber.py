@@ -7,7 +7,7 @@
      ╚════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚═╝ ╚═╝╚═╝     ╚═╝
      
      Made by kldiscord on github. Thank you for using!
-     + This is the last version of justagrabber, no updates will be realeased cuz I have to work in other projects. :(
+     + This is not the last version of justagrabber, I will update many functions!!
 """ # JustaGrabber by KLDiscord
 
 import os, re, json, urllib.request,datetime # Importing modules
