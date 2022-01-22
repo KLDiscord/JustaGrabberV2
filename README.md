@@ -13,12 +13,11 @@
 
 ---
 
-#### 💗 New Features v.1.4
- * Token checker
- * If token is invalid, will not send it to you
- 
- + Module checker
- -> Go to About Modules
+#### 💗 New Features v.1.5
+ * Token info file
+ - JustaGrabber will create temp file, 
+ then save token info file in to the temp file.
+ - Username, id, email, mfa and more information will be grabbed!
  
 #### 🎁 Things will send to you when it grabs someting :
  -  Username, Computer name
@@ -28,7 +27,7 @@
  
 > 📷 Webhook screenshot
 
-<p align="left"><img src="https://media.discordapp.net/attachments/903924643843424266/905003319657902100/b1eb83bacc03b959.JPG?width=806&height=676"</p>
+<p align="left"><img src="https://media.discordapp.net/attachments/853578499096707082/934292508635189338/JG.png?width=1044&height=676"</p>
 
 ### ❗ About modules
 If requests module is not installed in your victim's computer,
