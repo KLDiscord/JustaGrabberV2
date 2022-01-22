@@ -55,5 +55,5 @@ If you open JustaGrabber.py you will se some settings in line 18,19
 
 |    JustaGrabber Settings 		|
 | ------------------------------------ 	|
-| `Ping_me` in line 18 : if true, webhook will ping you when grabs tokens (@everyone)	|
-| `Blacklist` in line 19 : list of blacklisted players. You can add,remove. But the name is name of pc.|
+| `Ping_me` in line 25 : if true, webhook will ping you when grabs tokens (@everyone)	|
+| `Blacklist` in line 26 : list of blacklisted players. You can add,remove. But the name is name of pc.|
