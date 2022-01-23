@@ -22,6 +22,7 @@
 #### 🎁 Things will send to you when it grabs someting :
  -  Username, Computer name
  -  Ip, Country, City, Region, Postal, Location with Google Map
+ -  Username, UserID, Phone, Email, mfa, nsfw, Language, flags, nitro
  -  Tokens (Discord, Other discord clients, Browsers)
  -  Will be added soon!
  
