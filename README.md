@@ -52,7 +52,7 @@ replace JustaGrabber.py to your file name.
 go into the dist folder and there is your exe ready to be sent to victims!
 
 ### 💾・ Settings
-If you open JustaGrabber.py you will se some settings in line 18,19
+If you open JustaGrabberV2.py you will se some settings in line 18,19
 
 |    JustaGrabber Settings 		|
 | ------------------------------------ 	|
